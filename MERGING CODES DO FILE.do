@@ -74,46 +74,4 @@ save, replace
  merge 1:m hhid1 using "C:\Users\Shruti Singh\Desktop\shrusti\stata file\prv1 s
 br
 
-statistic
-describe v45 whetherreceivedanyvocationaltech  sex age generaleducaionlevel sector earningsforregularsalaridwageact nssregion
-
-
-
-
-// Gender
-label define sex_lbl 1 "Male" 2 "Female" 3 "Other"
-label values sex sex_lbl
-
-// Age group (you may have to create this)
-gen age_group = .
-replace age_group = 1 if age >=15 & age <=18
-replace age_group = 2 if age >=19 & age <=24
-replace age_group = 3 if age >=25 & age <=29
-label define age_lbl 1 "15-18" 2 "19-24" 3 "25-29"
-label values age_group age_lbl
-
-// Caste
-//label define caste_lbl 1 "SC" 2 "ST" 3 "OBC" 4 "General"
-//label values caste caste_lbl
-
-// Religion
-label define religion_lbl 1 "Hinduism" 2 "Islam" 3 "Christianity" 4 "Other"
-label values religion religion_lbl
-
-// Urban/Rural (assuming 'sector' = 1 rural, 2 urban)
-label define sector_lbl 1 "Rural" 2 "Urban"
-label values sector sector_lbl
-
-
-gen employed = .
-replace employed = 1 if inlist(statuscode, 11, 12, 21, 31, 41, 51)
-replace employed = 0 if inlist(statuscode, 81, 91, 92, 93,94, 95, 97, 98, 99)
-label define emp_lbl 0 "Not Employed" 1 "Employed"
-label values employed emp_lb1
-
-gen gender = .
-replace gender = 1 if inlist(sex, "Male")
-relace gender = 0 if inlist(sex, "Female")
-lable define gender_lb1 0 "Female" 1 Male"
-lavle values gender gender_lb1
-
+*Merge complete
